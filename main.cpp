@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <IOTape.h>
 
 int main()
 {

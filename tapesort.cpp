@@ -1,6 +1,24 @@
 #include "TapeSort.h"
 
-TapeSort::TapeSort() {
+TapeSort::TapeSort(std::string input_tape_path, std::string output_tape_path) {
+	this->io_interface = IOTape(input_tape_path, output_tape_path);
+}
+
+TapeSort::~TapeSort() {
+
+}
+
+void TapeSort::sort() {
+
+}
+
+void TapeSort::merge(std::string src1, std::string src2, std::string dest) {
+	int32_t f1 = io_interface.get_value(src1);
+	int32_t f2_cur = io_interface.get_value(src2);
+	int32_t f2_next = io_interface.get_value(src2);
+}
+
+void TapeSort::distribute() {
 
 }
 /*
