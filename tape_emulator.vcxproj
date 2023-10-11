@@ -131,13 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="IOTape.cpp" />
-    <ClCompile Include="TapeSort.cpp" />
+    <ClCompile Include="TapeEmulator.cpp" />
+    <ClCompile Include="TapeSorter.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IOTape.h" />
-    <ClInclude Include="TapeSort.h" />
+    <ClInclude Include="TapeEmulator.h" />
+    <ClInclude Include="TapeSorter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
