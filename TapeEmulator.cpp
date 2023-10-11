@@ -38,7 +38,7 @@ void TapeEmulator::readConfig() {
 }
 
 int32_t TapeEmulator::getValue(std::fstream src) {
-	std::this_thread::sleep_for(std::chrono::milliseconds(this->delays[READ]));
+	std::this_thread::sleep_for(std::chrono::milliseconds(this->delays[READ] + this->delays[SHIFT]));
 	std::string line;
 	src >> line;
 	int32_t value = std::atoi(line.c_str());
@@ -46,7 +46,7 @@ int32_t TapeEmulator::getValue(std::fstream src) {
 }
 
 void TapeEmulator::writeValue(std::fstream dst, const int32_t value) {
-	std::this_thread::sleep_for(std::chrono::milliseconds(this->delays[WRITE]));
+	std::this_thread::sleep_for(std::chrono::milliseconds(this->delays[WRITE] + this->delays[SHIFT]));
 	std::string line = std::to_string(value);
 	dst << line << std::endl;
 }
