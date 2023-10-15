@@ -1,6 +1,4 @@
-#define _TAPE_SORTER_H_
-#ifdef _TAPE_SORTER_H_
-
+#pragma once
 #include "TapeEmulator.h"
 
 #include <string>
@@ -15,15 +13,14 @@ class TapeSorter
 {
 /// FIELDS
 public:
-	TapeEmulator io_module;
+	TapeEmulator& emulator;
 
 /// METHODS
 public:
-	TapeSorter(TapeEmulator& emulator);
+	TapeSorter(TapeEmulator& other);
 	~TapeSorter();
 	void sort();
-private:
+
 	void merge();
-	void distribute();
+	bool distribute();
 };
-#endif // _TAPE_SORTER_H_

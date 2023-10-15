@@ -1,6 +1,4 @@
-#define _TAPE_EMULATOR_H_
-#ifdef _TAPE_EMULATOR_H_
-
+#pragma once
 #include <iostream>
 #include <fstream>
 
@@ -14,7 +12,7 @@ class TapeEmulator
 // FIELDS
 public:
 	// file pointers
-	std::fstream primary, tmp1, tmp2, output;
+	std::string input, output;
 
 	// delays
 private:
@@ -28,11 +26,8 @@ public:
 	
 	void readConfig();
 
-	int32_t getValue(std::fstream src);
-	void writeValue(std::fstream dst, int32_t value);
-	void shiftTape(std::fstream file);
-	void rewindTape(std::fstream file);
-
-	void operator= (TapeEmulator& other);
+	int32_t getValue(std::fstream &src);
+	void writeValue(std::fstream &dst, const int32_t value);
+	void shiftTape(std::fstream &file);
+	void rewindTape(std::fstream &file);
 };
-#endif // _TAPE_EMULATOR_H_
