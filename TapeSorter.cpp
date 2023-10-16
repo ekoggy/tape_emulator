@@ -11,7 +11,7 @@ TapeSorter::~TapeSorter() {
 void TapeSorter::sort() {
 	
 	std::fstream input(this->emulator.input, std::ios::in);
-	std::fstream tmp3("./tmp_tape_3", std::ios::out | std::ios::trunc);
+	std::fstream tmp3("/tmp/tmp_tape_3", std::ios::out | std::ios::trunc);
 	while (!input.eof()) {
 		int32_t a = this->emulator.getValue(input);
 		this->emulator.writeValue(tmp3, a);
@@ -26,7 +26,7 @@ void TapeSorter::sort() {
 	}
 
 
-	tmp3.open("./tmp_tape_3", std::ios::in);
+	tmp3.open("/tmp/tmp_tape_3", std::ios::in);
 	this->emulator.rewindTape(tmp3);
 	std::fstream output(this->emulator.output, std::ios::out | std::ios::trunc);
 
@@ -41,9 +41,9 @@ void TapeSorter::sort() {
 
 void TapeSorter::merge() {
 	std::fstream tmp[3];
-	tmp[0].open("./tmp_tape_1", std::ios::in);
-	tmp[1].open("./tmp_tape_2", std::ios::in);
-	tmp[2].open("./tmp_tape_3", std::ios::out | std::ios::trunc);
+	tmp[0].open("/tmp/tmp_tape_1", std::ios::in);
+	tmp[1].open("/tmp/tmp_tape_2", std::ios::in);
+	tmp[2].open("/tmp/tmp_tape_3", std::ios::out | std::ios::trunc);
 
 	int32_t a1 = this->emulator.getValue(tmp[0]);
 	int32_t a2 = this->emulator.getValue(tmp[1]);
@@ -83,9 +83,9 @@ void TapeSorter::merge() {
 
 bool TapeSorter::distribute() {
 	std::fstream tmp[3];
-	tmp[0].open("./tmp_tape_1", std::ios::out | std::ios::trunc);
-	tmp[1].open("./tmp_tape_2", std::ios::out | std::ios::trunc);
-	tmp[2].open("./tmp_tape_3", std::ios::in);
+	tmp[0].open("/tmp/tmp_tape_1", std::ios::out | std::ios::trunc);
+	tmp[1].open("/tmp/tmp_tape_2", std::ios::out | std::ios::trunc);
+	tmp[2].open("/tmp/tmp_tape_3", std::ios::in);
 
 	int32_t a = this->emulator.getValue(tmp[2]);
 	int32_t a_next = a;

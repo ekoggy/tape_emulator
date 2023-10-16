@@ -19,7 +19,7 @@ TapeEmulator::~TapeEmulator() {
 }
 
 void TapeEmulator::readConfig() {
-	std::ifstream config("tape_emulator.conf");///etc/tape_emulator.conf
+	std::ifstream config("//etc/tape_emulator.conf");
 	uint32_t i = 0;
 	while (!config.eof()) {
 		std::string line;
@@ -36,6 +36,7 @@ int32_t TapeEmulator::getValue(std::fstream& src) {
 	std::string line;
 	src >> line;
 	int32_t value = std::atoi(line.c_str());
+	this->shiftTape(src);
 	return value;
 }
 
@@ -43,6 +44,7 @@ void TapeEmulator::writeValue(std::fstream& dst, const int32_t value) {
 	std::this_thread::sleep_for(std::chrono::milliseconds(this->delays[WRITE]));
 	std::string line = std::to_string(value);
 	dst << line << std::endl;
+	this->shiftTape(dst);
 }
 
 void TapeEmulator::shiftTape(std::fstream& file) {
