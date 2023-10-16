@@ -19,7 +19,7 @@ TapeEmulator::~TapeEmulator() {
 }
 
 void TapeEmulator::readConfig() {
-	std::ifstream config("//etc/tape_emulator.conf");
+	std::ifstream config("/etc/tape_emulator.conf");
 	uint32_t i = 0;
 	while (!config.eof()) {
 		std::string line;
